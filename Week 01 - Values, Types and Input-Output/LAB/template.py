@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  : Yomna Alhajry
+Lane  :  AI       (delete two)
+Date  : 26-09-2026
 
 Run it:   python template.py
 
@@ -21,21 +21,58 @@ Delete these instructions as you replace them with your code.
 #
 #    Remember: input() always gives back text.
 
-label = ""      # : replace with an input() call
-first = 0.0     # : replace with an input() call, converted
-second = 0.0    # : replace with an input() call, converted
+label = input("Enter label: ")  
+first = float(input("Enter first value: "))  
+second = float(input("Enter second value: "))  
 
+print("=" * 20)
+print(f"  RECORD CHECK  -  {label}")
+print("=" * 20)
+print(f"Used\t:{first}")
+print(f"Total\t:{second}")
+print("=" * 20)
 
 # ================================================================== PROCESS
 # 2. Work out what you were NOT given.       [Typical and above]
 #
 #    - difference : how far the first is from the second
 #    - percent    : the first as a percentage of the second
-#
-#    Do not type the answers. Calculate them.
 
-difference = 0.0   # 
-percent = 0.0      # 
+label = input("Enter label: ")  
+first = float(input("Enter first value: "))  
+second = float(input("Enter second value: "))  
+
+difference = second - first  
+percent = (first / second * 100) 
+
+print("=" * 20)
+print(f"  RECORD CHECK  -  {label}")
+print("=" * 20)
+print(f"Used        :   {first:>10.2f}")
+print(f"Total       :   {second:>10.2f}")
+print(f"Difference  :   {difference:>10.2f}")
+print(f"Percentage  :   {percent:>10.2f}%")
+print("=" * 20)
+
+# difference always shows its sign, plus one line of your own
+
+label = input("Enter label: ")  
+first = float(input("Enter first value: "))  
+second = float(input("Enter second value: "))  
+
+difference = second - first  
+percent = (first / second * 100) 
+remainingPercent = 100 - percent  #useful line of your own
+
+print("=" * 20)
+print(f"  RECORD CHECK  -  {label}")
+print("=" * 20)
+print(f"Used        :   {first:>10.2f}")
+print(f"Total       :   {second:>10.2f}")
+print(f"Difference  :   {difference:>+10.2f}")  #show sign
+print(f"Percentage  :   {percent:>10.2f}%")
+print(f"Remaining   :   {remainingPercent:>10.2f}%") # useful line of your own
+print("=" * 20)
 
 
 # =================================================================== OUTPUT
@@ -48,14 +85,38 @@ percent = 0.0      #
 #    Useful:   f"{value:>10.2f}"    right-aligned, 2 decimal places
 #              f"{value:>+10.2f}"   the same, but always shows the sign
 
-print()
-print("=" * 34)
-print(f"  RECORD CHECK  -  {label}")
-print("=" * 34)
 
 # : your report lines go here
+'''Threshold : print the three values you were given, inside a border
+====================
+  RECORD CHECK  -  8y0
+====================
+Used    :20.0
+Total   :40.0
+====================
 
-print("=" * 34)
+Typical   : add difference and percent, 2 decimal places, right-aligned
+====================
+  RECORD CHECK  -  ty7
+====================
+Used        :        76.00
+Total       :        99.00
+Difference  :        23.00
+Percentage  :        76.77%
+====================
+
+Excellent : difference always shows its sign, plus one line of your own
+====================
+  RECORD CHECK  -  exx55
+====================
+Used        :        23.00
+Total       :        90.00
+Difference  :       +67.00
+Percentage  :        25.56%
+Remaining   :        74.44%
+====================
+
+'''
 
 
 # ==========================================================================
