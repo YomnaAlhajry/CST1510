@@ -94,6 +94,7 @@ while True:
     print(f"Percent     :{percent:>10.2f}%")
     print(f"Status      :{status:>10}")
     print('=' * 30)
+
 print(f"Number of records OVER LIMIT: {over_limit}")
 
 # =================================================================== OUTPUT
@@ -129,6 +130,50 @@ Percent     :    100.00%
 Status      :OVER LIMIT
 ==============================
 
+EXCELLENT
+==============================
+Enter label (or 'quit' to exit): quit
+Number of records OVER LIMIT: 0
+
+==============================
+Enter label (or 'quit' to exit): yuy
+Enter used: 99
+Enter total: 100
+==============================
+Record check - yuy
+==============================
+Used        :     99.00
+Total       :    100.00
+Difference  :      1.00
+Percent     :     99.00%
+Status      :   WARNING
+==============================
+Enter label (or 'quit' to exit): uyuy
+Enter used: 120
+Enter total: 100
+==============================
+Record check - uyuy
+==============================
+Used        :    120.00
+Total       :    100.00
+Difference  :    -20.00
+Percent     :    120.00%
+Status      :OVER LIMIT
+==============================
+Enter label (or 'quit' to exit): yyy
+Enter used: 112
+Enter total: 100
+==============================
+Record check - yyy
+==============================
+Used        :    112.00
+Total       :    100.00
+Difference  :    -12.00
+Percent     :    112.00%
+Status      :OVER LIMIT
+==============================
+Enter label (or 'quit' to exit): quit
+Number of records OVER LIMIT: 2
 
 
 
