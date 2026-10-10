@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  : Yomna ALhajry
+Lane  :  AI       (delete two)
+Date  : 9/10/2026
 
 Run it:   python template.py
 
@@ -27,8 +27,35 @@ Delete these instructions as you replace them with your code.
 #    Give each function a one-line docstring saying what it does.
 
 # your function(s) go here
+# threshold
+def status_of(percent):
+    """it returns the status based on the value of the percent"""
+    if percent >= 100:
+        return "OVER LIMIT"
+    elif percent >= 90:
+        return "WARNING"
+    else:
+        return "OK"
+# Typical
+def check(value, limit):
+    """it returns the difference and percentage"""
+    difference = limit - value
+    percent = (value / limit) * 100
+    return difference, percent
+# Excellent
+def print_report(label, value, limit, difference, percent, status):
+    """This holds all the print commands in one record"""
+    print()
+    print("=" * 34)
+    print(f"  RECORD CHECK  -  {label}")
+    print("=" * 34)
 
-
+    print(f"Used:   {value:>10.2f}")
+    print(f"Total:   {limit:>10.2f}")
+    print(f"Free:   {difference:>10.2f}")      # added for the typical
+    print(f"Percent:   {percent:>10.2f}%")      # added for the typical 
+    print(f"Status:   {status}")
+    print("=" * 34)
 # ==================================================================== INPUT
 # 2. Ask for your three values.
 #
@@ -36,9 +63,10 @@ Delete these instructions as you replace them with your code.
 #    - the second is a NUMBER (use float(), not int())
 #    - the third  is a NUMBER (use float(), not int())
 
-label = ""      # replace with an input() call
-value = 0.0     # replace with an input() call, converted
-limit = 0.0     # replace with an input() call, converted
+# threshold, typical
+#label = input("Enter label: ")      
+#value = float(input("Enter value: "))     
+#limit = float(input("Enter limit: "))      
 
 
 # ================================================================== PROCESS
@@ -48,9 +76,9 @@ limit = 0.0     # replace with an input() call, converted
 #                difference and percentage inline, not in a function.
 #    Typical   : call check() to get the difference and percentage instead.
 
-difference = 0.0   # replace with your code
-percent = 0.0       # replace with your code
-status = ""          # replace with your code
+# threshold
+#difference, percent = check(value, limit)   # added for the typical
+#status = status_of(percent)         
 
 
 # =================================================================== OUTPUT
@@ -64,15 +92,21 @@ status = ""          # replace with your code
 #                Keep count of how many came back OVER LIMIT and print that
 #                once, after the loop ends.
 
-print()
-print("=" * 34)
-print(f"  RECORD CHECK  -  {label}")
-print("=" * 34)
+over_count = 0
+while True:
+    label = input("Enter label or 'quit' to stop:   ")
+    if label == "quit":
+        break
+    value = float(input("Enter value: "))     
+    limit = float(input("Enter limit: "))  
+    difference, percent = check(value, limit)   # added for the typical
+    status = status_of(percent)  
 
-# your report lines go here
+    print_report(label, value, limit, difference, percent, status) #call print_report()
+    if status == "OVER LIMIT":
+        over_count += 1
 
-print("=" * 34)
-
+print(f"Num of OVER LIMIT:  {over_count}")
 
 # ==========================================================================
 # 5. Before you finish:
@@ -81,3 +115,16 @@ print("=" * 34)
 #    [ ] Run it with a total of 0 and note the error (do not fix it yet)
 #    [ ] Check every function does one job - if a function both calculates
 #        and prints, split it
+""""
+==================================
+  RECORD CHECK  -  srv-01
+==================================
+Used:       128.00
+Total:       120.00
+Free:        -8.00
+Percent:       106.67%
+Status:   OVER LIMIT
+==================================
+Enter label or 'quit' to stop:   quit
+Num of OVER LIMIT:  1
+"""

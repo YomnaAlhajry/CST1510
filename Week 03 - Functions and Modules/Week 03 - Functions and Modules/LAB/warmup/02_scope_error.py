@@ -3,7 +3,10 @@
 
 def check(value, limit):
     status = "OVER LIMIT" if value > limit else "OK"
+    return status
 
-check(87, 100)
+num = check(87, 100)
 
-print(status)
+print(num)
+
+#I added the return, so it returns the status and stores its data in the num variable
