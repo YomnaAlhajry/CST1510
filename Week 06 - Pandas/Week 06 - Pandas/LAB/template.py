@@ -2,8 +2,8 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
+Name  : Yomna Alhajry
+Lane  :  AI       (delete two)
 Date  :
 
 Run it:   python template.py
@@ -13,13 +13,14 @@ Delete these instructions as you replace them with your code.
 """
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # ==================================================================== LOAD
 # 1. Read your data file with pd.read_csv(). Make your own CSV, header row
 #    plus at least 5 data rows: label,value,limit (or your lane's own field
 #    names - same shape, different words).
 
-df = None   # replace with pd.read_csv("your_file.csv")
+df = pd.read_csv("C:\\Users\\yomna\\Downloads\\CST1510-1\\Week 06 - Pandas\\Week 06 - Pandas\\LAB\\data_report.csv")
 
 
 # ================================================================= PROCESS
@@ -29,7 +30,12 @@ df = None   # replace with pd.read_csv("your_file.csv")
 #    lambda - "OVER LIMIT" (100%+), "WARNING" (90%+), otherwise "OK".
 
 # your column(s) go here
-
+df["percent"] = (df["score"] / df["total"]) * 100
+df["status"] = df["percent"].apply( lambda p:
+    "OVER LIMIT" if p >= 100
+    else "WARNING" if p >= 90
+    else "OK"
+)
 
 # ================================================================== OUTPUT
 # 3. Print the DataFrame.
@@ -42,6 +48,17 @@ df = None   # replace with pd.read_csv("your_file.csv")
 #                one bar chart of the counts per status.
 
 print(df)
+print(df[df["status"] != "OK"])
+
+counts = df["status"].value_counts()
+print(counts)
+
+df.to_csv("survey_results.csv", index=False)
+
+counts.plot(kind="bar") 
+plt.title("Data Report")
+plt.savefig("status_counts.png")
+plt.show()
 
 
 # ==========================================================================
